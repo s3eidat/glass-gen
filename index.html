@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' data: blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Glass Gen — Free Glassmorphism CSS Generator | S3eidat Tools</title>
+<meta name="description" content="Design frosted-glass (glassmorphism) UI with live controls for blur, transparency, saturation, border, radius and tint over a colorful animated backdrop. Copy the CSS. Free and private.">
+<meta property="og:title" content="Glass Gen — glassmorphism CSS generator">
+<meta property="og:description" content="Blur, tint, saturation and border controls with live preview. Runs in your browser.">
+<meta property="og:image" content="screenshot.png">
+<link rel="icon" href="kit/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="app.css">
+<script src="kit/kit.js"></script>
+</head>
+<body data-tool="glass-gen">
+<main class="s3-main">
+  <section class="s3-hero">
+    <h1>Glass Gen</h1>
+    <p>Frosted-glass cards in a few slides. Tune the blur, tint and border over a colorful backdrop, then copy the CSS.</p>
+  </section>
+
+  <div class="gg-grid">
+    <section class="card stack">
+      <div class="stage" id="stage" data-bg="blobs">
+        <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
+        <div class="glass" id="glass">
+          <div class="g-top"><span class="g-dot"></span><span class="g-dot"></span><span class="g-dot"></span></div>
+          <b class="g-title">Frosted glass</b>
+          <span class="g-sub">Everything behind this card is blurred live by your browser.</span>
+          <span class="g-pill">backdrop-filter</span>
+        </div>
+      </div>
+      <div class="row between">
+        <div class="seg" id="bg" role="group" aria-label="Backdrop">
+          <button aria-pressed="true" data-v="blobs">Blobs</button>
+          <button aria-pressed="false" data-v="mesh">Mesh</button>
+          <button aria-pressed="false" data-v="stripes">Stripes</button>
+        </div>
+        <div class="row">
+          <label class="btn small ghost" id="own-bg"><svg class="i"><use href="#i-image"/></svg>Your image<input type="file" accept="image/*" hidden></label>
+          <button class="btn small ghost" id="pause" aria-pressed="false"><svg class="i"><use href="#i-pause"/></svg><span>Pause</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card stack">
+      <div class="ctl" id="ctl">
+        <label class="field"><span class="row between"><span>Blur</span><span class="v" data-v="blur"></span></span><input type="range" data-k="blur" min="0" max="40"></label>
+        <label class="field"><span class="row between"><span>Transparency</span><span class="v" data-v="transparency"></span></span><input type="range" data-k="transparency" min="0" max="100"></label>
+        <label class="field"><span class="row between"><span>Saturation</span><span class="v" data-v="saturation"></span></span><input type="range" data-k="saturation" min="100" max="250" step="5"></label>
+        <label class="field"><span class="row between"><span>Border opacity</span><span class="v" data-v="border"></span></span><input type="range" data-k="border" min="0" max="100"></label>
+        <label class="field"><span class="row between"><span>Corner radius</span><span class="v" data-v="radius"></span></span><input type="range" data-k="radius" min="0" max="48"></label>
+        <div class="row tint-row">
+          <input type="color" id="tint" aria-label="Tint color">
+          <span class="grow lbl">Tint</span>
+          <label class="check"><input type="checkbox" id="shadow"> Shadow</label>
+        </div>
+      </div>
+      <div>
+        <span class="lbl">Presets</span>
+        <div class="presets mt" id="presets"></div>
+      </div>
+      <div class="row between">
+        <h2>CSS</h2>
+        <button class="btn small primary" id="copy"><svg class="i"><use href="#i-copy"/></svg>Copy CSS</button>
+      </div>
+      <pre class="out" id="css" tabindex="0"></pre>
+      <p class="faint">Works in all current browsers. <code>-webkit-backdrop-filter</code> is included for Safari.</p>
+    </section>
+  </div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
